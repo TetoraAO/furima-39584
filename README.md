@@ -27,9 +27,9 @@
 | explanation        | text       | null: false                    |
 | category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
-| Delivery_charge_id | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
 | region_id          | integer    | null: false                    |
-| Delivery_date_id   | integer    | null: false                    |
+| delivery_date_id   | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
