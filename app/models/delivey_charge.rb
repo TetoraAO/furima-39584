@@ -1,0 +1,2 @@
+class DeliveyCharge < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class DeliveyDate < ApplicationRecord
+end
