@@ -4,14 +4,14 @@ FactoryBot.define do
     explanation {Faker::Lorem.sentence}
     category_id {2}
     condition_id {2}
-    shipping_charge_id {2}
-    prefecture_id {2}
-    shipping_date_id {2}
+    delivery_charge_id {2}
+    region_id {2}
+    delivery_date_id {2}
     price {Faker::Number.within(range: 300..9999999)}
     association :user
     
     after(:build) do |item|
-      item.images.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+      item.image.attach(io: File.open('public/16713.jpg'), filename: '16713.jpg')
     end
     
   end
