@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
   belongs_to_active_hash :region
-  belongs_to_active_hash :delivery_charger
+  belongs_to_active_hash :delivery_charge
   belongs_to_active_hash :delivery_date
 
   with_options presence: true do
