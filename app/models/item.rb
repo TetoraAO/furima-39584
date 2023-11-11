@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_one :record
+  #has_one :record
 
   has_one_attached :image
 
@@ -30,7 +30,7 @@ class Item < ApplicationRecord
     validates :delivery_date_id
   end
 
-  with_options presence: true, format: { with: /\A[0-9]+\z/ } do
+  with_options presence: true do
     validates :price
   end
 

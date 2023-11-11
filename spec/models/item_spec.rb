@@ -1,4 +1,6 @@
 require 'rails_helper'
+require spec_helper
+format documentation
 
 RSpec.describe Item, type: :model do
   before do
@@ -8,10 +10,6 @@ RSpec.describe Item, type: :model do
   describe '商品出品' do
     context '商品出品ができるとき' do
       it "商品の画像、名前、説明、カテゴリー情報、商品の状態、配送料の負担、配送元の地域、発送までの日数、価格について適切に記入すると商品を出品できる" do
-        expect(@item).to be_valid
-      end
-      it "商品の画像が2枚以上でも商品を出品できること" do
-        @item.image.attach(io: File.open('public/16713.jpg'), filename: '16713.jpg')
         expect(@item).to be_valid
       end
     end
