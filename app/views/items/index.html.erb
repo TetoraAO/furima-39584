@@ -141,7 +141,7 @@
           <%# end %>
 
         </div>
-        
+
         <div class='item-info'>
           <h3 class='item-name'>
             <%= item.name %>
@@ -159,7 +159,7 @@
     <% end %>
       
 
-      <%# if @items.count == 0 %>
+      <% if @items.count == 0 %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -177,7 +177,8 @@
         </div>
         <% end %>
       </li>
-      <%# end %>
+      <% end %>
+      
     </ul>
   </div>
   <%# /商品一覧 %>
