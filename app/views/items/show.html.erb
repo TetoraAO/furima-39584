@@ -23,8 +23,7 @@
       </span>
     </div>
 
-    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-
+    <%# //人物分岐 %>
     <% if user_signed_in? %>
       <% if current_user.id == @item.user_id %>
         <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
@@ -35,8 +34,8 @@
       <% end %>
     <% end %>
 
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
+    <%# //商品情報%>
     <div class="item-explain-box">
       <span><%= @item.explanation %></span>
     </div>
@@ -79,7 +78,9 @@
       </div>
     </div>
   </div>
-  <%# /商品の概要 %>
+
+
+  <%# //コメントBOX %>
 
   <div class="comment-box">
     <form>
