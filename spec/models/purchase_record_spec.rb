@@ -5,7 +5,6 @@ RSpec.describe PurchaseRecord, type: :model do
     @item = FactoryBot.create(:item)
     @user = FactoryBot.create(:user)
     @purchase_record = FactoryBot.build(:purchase_record, user_id: @user.id, item_id: @item.id)
-    sleep(1)
   end
 
   describe '商品購入機能' do
@@ -23,22 +22,22 @@ RSpec.describe PurchaseRecord, type: :model do
       it "postal_codeが空だと購入できないこと" do
         @purchase_record.postal_code = nil
         @purchase_record.valid?
-        expect(@purchase_record.errors.full_messages).to include("Postal code can't be blank")
+        expect(@purchase_record.errors.full_messages).to include("Postal code can't be blank", "Postal code is invalid")
       end
       it "postal_codeが半角のハイフンを含んだ正しい形式でないと購入できないこと" do
         @purchase_record.postal_code = "2270066"
         @purchase_record.valid?
-        expect(@purchase_record.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@purchase_record.errors.full_messages).to include("Postal code is invalid")
       end
-      it "prefecture_idが空だと購入できない" do
-        @purchase_record.prefecture_id = nil
+      it "region_idが空だと購入できない" do
+        @purchase_record.region_id = nil
         @purchase_record.valid?
-        expect(@purchase_record.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@purchase_record.errors.full_messages).to include("Region can't be blank")
       end
-      it "prefecture_idが1だと購入できないこと" do
-        @purchase_record.prefecture_id = 1
+      it "region_idが1だと購入できないこと" do
+        @purchase_record.region_id = 1
         @purchase_record.valid?
-        expect(@purchase_record.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@purchase_record.errors.full_messages).to include("Region must be other than 1")
       end
       it "cityが空だと購入できないこと" do
         @purchase_record.city = nil
@@ -77,5 +76,5 @@ RSpec.describe PurchaseRecord, type: :model do
       end
     end
   end
-end"
 end
+
