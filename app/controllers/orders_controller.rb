@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       @purchase_record.save
       redirect_to root_path
     else
-      render action: :index
+      render :index,status: :unprocessable_entity
     end
   end
 
