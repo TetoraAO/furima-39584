@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     if (@item.user_id == current_user.id) || @item.record.present?
       redirect_to root_path
     end
