@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
-  before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_user!, only: [:index]
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @purchase_record = PurchaseRecord.new(record_params)
     if @purchase_record.valid?
       pay_item
@@ -23,7 +24,7 @@ class OrdersController < ApplicationController
 
   private
   def record_params
-    params.require(:purchase_record).permit(:postal_code, :region_id, :city, :house_number, :building_name, :phone_number, :user_id, :item_id,:record_id).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.require(:purchase_record).permit(:postal_code, :region_id, :city, :house_number, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def set_item
