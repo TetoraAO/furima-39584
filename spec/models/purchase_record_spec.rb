@@ -59,6 +59,11 @@ RSpec.describe PurchaseRecord, type: :model do
         @purchase_record.valid?
         expect(@purchase_record.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
       end
+      it "phone_numberは9桁以下だと購入できないこと" do
+        @purchase_record.phone_number = "0903468"
+        @purchase_record.valid?
+        expect(@purchase_record.errors.full_messages).to include("Phone number is too short (minimum is 9 characters)")
+      end
       it "phone_numberは全角数字だと購入できないこと" do
         @purchase_record.phone_number = "１２３４５６７８９０１"
         @purchase_record.valid?
