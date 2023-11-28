@@ -5,13 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
-  # has_many :records
+  has_many :orders
 
   with_options presence: true do
     validates :nickname
     validates :birthday
     validates :password_confirmation
   end
+
+  validates :email, uniqueness: { case_sensitive: false }
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates :password, format: { with: VALID_PASSWORD_REGEX }
